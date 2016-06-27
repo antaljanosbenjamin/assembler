@@ -2,14 +2,14 @@ package Commands;
 
 import ApplicationComponents.Processor;
 
-public class Eq extends Command{
+public class Eq extends Command {
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	protected String op2;
 
-	public Eq(String operand1, String operand2, Processor proc) throws InvalidCommandArgumentException{
+	public Eq(String operand1, String operand2, Processor proc) throws InvalidCommandArgumentException {
 		op1 = operand1;
 		op2 = operand2;
 		p = proc;
@@ -22,8 +22,7 @@ public class Eq extends Command{
 
 	@Override
 	public void execute() {
-		//p.addConstant(op1, stringToInt(op2));
+		// p.addConstant(op1, stringToInt(op2));
 	}
-
 
 }

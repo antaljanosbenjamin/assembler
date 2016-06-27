@@ -31,14 +31,15 @@ import Commands.InvalidCommandNameException;
 
 public class Application {
 	private JFrame window = new JFrame("Homemade Assembler");
-	private JTextArea assCode = new JTextArea(30, 30);
-	private JTextArea mem = new JTextArea(30, 54);
+	private JTextArea assCode = new JTextArea(30, 40);
+	private JTextArea mem = new JTextArea(40, 78);
 	private ArrayList<JTextField> regTextFields;
 	private JScrollPane memScroll;
 	private Processor p;
 	private JCheckBoxMenuItem cb;
 	private JPanel rightPane;
 	private TreeMap<String, Register> regs;
+	private int memoryWidth = 8;
 
 	public static final int SAVING_RUNNING = 1;
 	public static final int SAVING_ENDED = 2;
@@ -145,7 +146,7 @@ public class Application {
 			if (cb.getState())
 				(new CompileButtonActionListener()).actionPerformed(arg0);
 			p.executeAll();
-			mem.setText(p.getMemory().toString(6, 3));
+			mem.setText(p.getMemory().toString(memoryWidth, 3));
 			int i = 0;
 			for (Iterator<Map.Entry<String, Register>> it = regs.entrySet().iterator(); it.hasNext(); i++) {
 				Map.Entry<String, Register> pair = it.next();
@@ -267,14 +268,13 @@ public class Application {
 					p.commandsClear();
 				} catch (InvalidCommandArgumentException icae) {
 					JOptionPane
-							.showMessageDialog(window,
-									"Invalid operand in line \"" + cmdStrOriginal + "\"! The invalid operand is \""
-											+ icae.getMessage() + "\"",
+							.showMessageDialog(
+									window, "Invalid operand in line \"" + cmdStrOriginal
+											+ "\"! The invalid operand is \"" + icae.getMessage() + "\"",
 									"Invalid opearand", JOptionPane.ERROR_MESSAGE);
 					p.commandsClear();
 				} catch (InvalidArgumentNumberException iane) {
-					JOptionPane.showMessageDialog(window,
-							"Invalid operand number in line \"" + cmdStrOriginal + "\"",
+					JOptionPane.showMessageDialog(window, "Invalid operand number in line \"" + cmdStrOriginal + "\"",
 							"Invalid operand number", JOptionPane.ERROR_MESSAGE);
 					p.commandsClear();
 				}
@@ -286,6 +286,7 @@ public class Application {
 		p = new Processor();
 
 		window.setResizable(true);
+		window.setMinimumSize(new Dimension(900, 800));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setLayout(new BorderLayout());
 
@@ -311,7 +312,6 @@ public class Application {
 		button_array.get(5).addActionListener(new StateLoadButtonActionListener());
 
 		rightPane = new JPanel(new GridBagLayout());
-		rightPane.setSize(new Dimension(700,600));
 		GridBagConstraints gbc = new GridBagConstraints();
 		for (int i = 0; i < button_array.size(); i++) {
 			button_array.get(i).setMargin(new Insets(2, 5, 2, 5));
@@ -322,7 +322,7 @@ public class Application {
 			gbc.anchor = GridBagConstraints.PAGE_START;
 			rightPane.add(button_array.get(i), gbc);
 		}
-		window.add(rightPane, BorderLayout.LINE_END);
+		window.add(rightPane, BorderLayout.CENTER);
 		JLabel memLabel = new JLabel("Memory:");
 		gbc.gridx = 0;
 		gbc.gridy = 3;
@@ -354,7 +354,7 @@ public class Application {
 		gbc.gridwidth = 8;
 		mem.setEditable(false);
 		rightPane.add(memScroll, gbc);
-		mem.setText(p.getMemory().toString(6, 3));
+		mem.setText(p.getMemory().toString(memoryWidth, 3));
 
 		JMenuBar mb = new JMenuBar();
 		JMenuItem codeSave = new JMenuItem("Save code");

@@ -2,41 +2,38 @@ package ApplicationComponents;
 
 import java.io.Serializable;
 
-public class Register implements Serializable{
+public class Register implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private int value;
-	
-	public Register(){
+
+	public Register() {
 		value = 0;
 	}
-	
-	public int getValue(){
+
+	public int getValue() {
 		return value;
-	} 
-	
-	public void setValue(int v){
+	}
+
+	public void setValue(int v) {
 		value = v;
 	}
-	
-	public void setValue(Register r){
+
+	public void setValue(Register r) {
 		value = r.value;
 	}
-	
-	public boolean getBit(int index){
+
+	public boolean getBit(int index) {
 		return ((1 << index) & value) > 0;
 	}
-	
-	public void setBit(int index, boolean b){
-		if (b)
-		{   // 1-be kell állítani
-			value =  ((1 << index) | value);
-		}
-		else
-		{	// 0-ba kell állítani
-			value =  (( Integer.MAX_VALUE ^ (1 << index)) & value);
+
+	public void setBit(int index, boolean b) {
+		if (b) { // 1-be kell ï¿½llï¿½tani
+			value = ((1 << index) | value);
+		} else { // 0-ba kell ï¿½llï¿½tani
+			value = ((Integer.MAX_VALUE ^ (1 << index)) & value);
 		}
 	}
 }

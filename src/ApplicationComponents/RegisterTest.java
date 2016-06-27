@@ -9,16 +9,16 @@ public class RegisterTest {
 	public void negativTest() {
 		Register reg = new Register();
 		reg.setValue(-1);
-		Assert.assertEquals(-1,reg.getValue());
+		Assert.assertEquals(-1, reg.getValue());
 	}
-	
+
 	@Test
 	public void overflowTest() {
 		Register reg = new Register();
 		reg.setValue(129);
-		Assert.assertEquals(-127,reg.getValue());
+		Assert.assertEquals(-127, reg.getValue());
 	}
-	
+
 	@Test
 	public void setBitTest() {
 		Register reg = new Register();

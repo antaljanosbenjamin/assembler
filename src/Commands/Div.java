@@ -9,11 +9,11 @@ public class Div extends Add {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Div(String operand, Processor proc) throws InvalidCommandArgumentException{
+	public Div(String operand, Processor proc) throws InvalidCommandArgumentException {
 		super(operand, proc);
 	}
-	
-	public void execute(){
+
+	public void execute() {
 		int op1AsNumber = 0;
 		Register akk = p.getRegister("A");
 		if (isNumeric(op1))
