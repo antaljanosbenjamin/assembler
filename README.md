@@ -18,6 +18,8 @@ You can download a runnable version (JAR file) from [here](https://goo.gl/Bxvr7P
         The constant is the index of the memory block, eg.: (13)
     - Reference to a memory block by value of a register, the name of the register is inside brackets. 
         The value of the register is the index of the memory block, eg.: (C)
+  * String
+    - Any string that contains only letters and numbers, exlude the name of commands or registers.
 
 ##Commands
  
