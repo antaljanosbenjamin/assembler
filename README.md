@@ -1,6 +1,6 @@
 # Summary
 
-A simple assembler with JAVA graphical interface and my own assembler language. Structure of the processor and syntax of the language based on [Z80](http://sgate.emt.bme.hu/patai/publications/z80guide/ "See more") architecture. The repo also contains a Hungarian documentation, with the list of the commands and three example assembly code.
+A simple assembler with JAVA graphical interface and my own assembler language. Structure of the processor and syntax of the language based on [Z80](https://www.google.hu/search?q=z80 "See more") architecture. The repo also contains a Hungarian documentation, with the list of the commands and three example assembly code.
 
 You can download a runnable version (JAR file) from [here](https://github.com/antaljanosbenjamin/assembler/blob/master/assembler.jar "Try out!").
 
